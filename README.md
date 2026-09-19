@@ -1,32 +1,82 @@
-# React + TypeScript + Vite
+# LandLens
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Intelligent Land Record Digitization and Validation System
 
-Currently, two official plugins are available:
+LandLens is a web-based application designed to digitize and validate land-record documents using Optical Character Recognition (OCR).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It extracts important information such as:
 
-## React Compiler
+- Owner Name
+- Survey Number
+- Village
+- District
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The system also validates whether all required fields have been successfully detected.
 
-## Expanding the Oxlint configuration
+## Problem Statement
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Land records in India can exist as handwritten registers, scanned documents, legacy PDFs, and other difficult-to-process formats.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+LandLens provides a simple digital workflow to:
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+1. Upload a land-record document
+2. Extract text using OCR
+3. Identify important land-record fields
+4. Validate the extracted information
+5. Display missing or incomplete fields
+
+## Features
+
+- Land-record image upload
+- OCR-based text extraction
+- English and Kannada OCR support
+- Automatic field extraction
+- Required-field validation
+- Complete/incomplete record detection
+- Dashboard for land-record processing
+- React + TypeScript frontend
+- Flask REST API backend
+
+## Technology Stack
+
+### Frontend
+
+- React
+- TypeScript
+- Vite
+- CSS
+- Lucide React
+
+### Backend
+
+- Python
+- Flask
+- Flask-CORS
+- Tesseract OCR
+- Pytesseract
+- Pillow
+
+## Project Structure
+
+```text
+LandLens/
+├── backend/
+│   ├── app.py
+│   ├── app_backup.py
+│   ├── requirements.txt
+│   └── ocr_test/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   └── Dashboard.tsx
+│   ├── services/
+│   │   └── api.ts
+│   ├── App.tsx
+│   └── App.css
+│
+├── .gitignore
+├── package.json
+├── README.md
+└── vite.config.ts
